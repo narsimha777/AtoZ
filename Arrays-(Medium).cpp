@@ -186,8 +186,8 @@ int longestConsecutiveSeq(vector<int>arr, int n){
 
 void setZeroes(vector<vector<int>>&arr, int n ,int m){
     int co = 1;
-    for(int i =1;i<n;i++){
-        for(int j=1;j<m;j++){
+    for(int i =0;i<n;i++){
+        for(int j=0;j<m;j++){
             if(arr[i][j]==0){
                 arr[i][0] = 0;
                 if(j!=0){
