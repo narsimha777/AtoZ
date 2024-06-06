@@ -179,7 +179,7 @@ void countingSort(int arr[], int n, int e){
     for(int i=1;i<10;i++){
         count[i] = count[i-1]+count[i];
     }
-    for(int i=0;i<n;i++){
+    for(int i=n-1;i>=0;i--){
         int d = (arr[i]/e)%10;
         int ind = count[d];
         res[ind-1] = arr[i];
