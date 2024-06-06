@@ -33,7 +33,7 @@ void selectionSort(int arr[], int n){
 // Bubble Sort
 
 void bubble(int arr[], int i, int n){
-    if(i==n){
+    if(i==n-1){
         return;
     }
     if(arr[i]>arr[i+1]){
