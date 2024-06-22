@@ -74,7 +74,7 @@ int Nofhrs(vector<int>bananas, int k){
 }
 
 int findK(vector<int>bananas, int hrs){
-    int low = *max_element(bananas.begin(), bananas.end());
+    int low = 1;
     int high = accumulate(bananas.begin(), bananas.end(), 0);
     int ans = -1;
     while(low<=high){
