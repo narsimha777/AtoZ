@@ -69,24 +69,28 @@ int majority(vector<int>arr, int n){
 
 // Kadanes Algorithm
 
-vector<int> maximumSumSubarray(vector<int>arr, int n){
-    int s =0;
+vector<int> maximumSumsubArray(vector<int>& arr) {
+    int l = 0, r = 0; 
+    int start = 0, end = 0; 
+    int currsum = 0;
     int res = INT_MIN;
-    int l=0;
-    int h=0;
-    for(int i=0;i<n;i++){
-        if(s<0){
-            l = i;
-            s = 0;
+    
+    for (int i = 0; i < arr.size(); i++) {
+        currsum += arr[i];
+        
+        if (currsum > res) {
+            res = currsum;
+            start = l;
+            end = i;
         }
-        s+=arr[i];
-        if(res<s){
-            res = s;
-            h = i;
+        
+        if (currsum < 0) {
+            currsum = 0;
+            l = i + 1;
         }
     }
-    vector<int>ans(arr.begin()+l, arr.begin()+h+1);
-    return ans;
+    
+    return vector<int>(arr.begin() + start, arr.begin() + end + 1);
 }
 
 // Stock buy and Sell
