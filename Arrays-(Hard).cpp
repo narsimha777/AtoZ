@@ -135,29 +135,37 @@ vector<vector<int>> four_sum(vector<int>arr, int k){
 
 //get index of sub array with xor k
 
-vector<int> mlsubarrayK(vector<int>arr, int k){
-    unordered_map<int,int>mp;
-    int xr =0;
-    int res = INT_MIN;
-    int l =-1;
-    int h =-1;
-    for(int i=0;i<arr.size();i++){
-        xr = xr^arr[i];
-        if(xr == k){
-            res= max(res, i+1);
-            l = 1;
-            h = i+1;
+vector<int> mlsubarrayK(vector<int> arr, int k) {
+    int xr = 0;
+    unordered_map<int, int> mp;
+    int maxLength = 0;
+    int start = 0, end = 0;
+    
+    for (int i = 0; i < arr.size(); i++) {
+        xr ^= arr[i];
+        
+        if (xr == k) {
+            if (maxLength < i + 1) {
+                maxLength = i + 1;
+                start = 0;
+                end = i;
+            }
         }
-        if(mp.count(xr^k)){
-            res = max(res, i-mp[xr^k]);
-            l = mp[xr^k]+1;
-            h = i+1;
+        
+        if (mp.count(xr ^ k)) {
+            if (maxLength < (i - mp[xr ^ k])) {
+                maxLength = i - mp[xr ^ k];
+                start = mp[xr ^ k] + 1;
+                end = i;
+            }
         }
-        if(!mp.count(xr)){
-            mp[xr]=i;
+        
+        if (!mp.count(xr)) {
+            mp[xr] = i;
         }
     }
-    return {l, h};
+    
+    return vector<int>(arr.begin() + start, arr.begin() + end + 1);
 }
 
 //find repeating and missing number in any order
