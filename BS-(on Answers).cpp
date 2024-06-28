@@ -301,7 +301,7 @@ int main()
     for(int i=0;i<n2;i++){
         cin>>arr2[i];
     }
-    // int res = MedianofArr(arr1, arr2, n1, n2);
+    // double res = MedianofArr(arr1, arr2, n1, n2);
     // cout<<"Result: "<<res;
     
     int k;
