@@ -355,8 +355,10 @@ int main(){
     // NodeD* curr = head;
     // for(int i =1;i<n;i++){
     //     cin>>x;
+    //     NodeD* temp = curr;
     //     curr->next = new NodeD(x); 
     //     curr=curr->next;
+    //     curr->prev  = temp;
     // }
     // cout<<"Result: ";
     // NodeD* rhead = reverseDLL(head);
