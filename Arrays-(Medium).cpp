@@ -15,7 +15,7 @@ vector<int> twosum(vector<int>arr ,int n, int k){
     unordered_map<int,int>mp;
     for(int i=0; i<n; i++){
         if(mp.count(k-arr[i])){
-            return {mp[arr[i]], i};
+            return {mp[k-arr[i]], i};
         }
         mp[arr[i]] = i;
     }
