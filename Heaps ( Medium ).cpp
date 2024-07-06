@@ -117,10 +117,6 @@ vector<int> MergeMsorted(vector<vector<int>>v, int r, int c){
             pq.push({v[row][col+1], {row, col+1}});
         }
     }
-    while(!pq.empty()){
-        res.push_back(pq.top().first);
-        pq.pop();
-    }
     return res;
 }
 
