@@ -93,11 +93,13 @@ void removeDuplicates(NodeD* head){
             curr =curr->next;
             delete(temp);
         }else{
+            curr->prev = l;
             l->next = curr;
             l = curr;
             curr= curr->next;
         }
     }
+    l->next = nullptr;
     return;
 }
 
