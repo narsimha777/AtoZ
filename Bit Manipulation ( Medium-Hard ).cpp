@@ -111,8 +111,6 @@ vector<int> PFusSive(int n){
     for(int i=2;i<n+1;i++){
         h[i]=i;
     }
-    h[0] = 0;
-    h[1] = 0;
     for(int i=2;i*i<=n;i++){
         if(h[i]==i){
             for(int j=i*i;j<=n;j+=i){
