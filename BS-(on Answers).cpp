@@ -111,7 +111,7 @@ int Nofdays(vector<int> bloomDay, int m, int k){
     int low = 1;
     int high = *max_element(bloomDay.begin(), bloomDay.end());
     int ans = -1;
-    if(m*k>high){
+    if(m*k>bloomDay.size()){
         return -1;
     }
     while(low<=high){
