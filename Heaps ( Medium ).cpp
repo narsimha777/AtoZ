@@ -89,8 +89,8 @@ vector<int> nearlySorted(vector<int>arr, int k){
         pq.push(arr[i]);
     }
     for(int i=k+1;i<arr.size();i++){
-        pq.push(arr[i]);
         res.push_back(pq.top());
+        pq.push(arr[i]);
         pq.pop();
     }
     while(!pq.empty()){
