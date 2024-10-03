@@ -270,6 +270,46 @@ int subarrayK(vector<int>arr, int n, int k){
     return c;
 }
 
+//Min swaps to make array B to integer A
+
+int minSwaps(int A, vector<int>&B){
+    int n = B.size();
+    int swaps = 0;
+    vector<int>target;
+    while(A){
+        target.push_back(A%10);
+        A/=10;
+    }
+    reverse(target.begin(), target.end());
+    if(target.size()!=B.size()){
+        return -1;
+    }
+    unordered_map<int,int>indmp;
+    for(int i=0;i<n;i++){
+        indmp[target[i]] = i;
+    }
+    vector<int>perm(n);
+    for(int i=0;i<n;i++){
+        perm[i] = indmp[B[i]];
+    }
+    vector<bool>vis(n, false);
+    for(int i=0;i<n;i++){
+        if(vis[i]||perm[i]==i){
+            continue;
+        }
+        int j = i;
+        int cycle_size = 0;
+        while(!vis[j]){
+            vis[j] = true;
+            j = perm[j];
+            cycle_size++;
+        }
+        if(cycle_size>1){
+            swaps+=cycle_size-1;
+        }
+    }
+    return swaps;
+}
 
 
 int main()
@@ -378,4 +418,18 @@ int main()
     // cin>>k;
     // int res = subarrayK(arr, n, k);
     // cout<<"Result: "<<res<<endl;
+
+    // int A;
+    // cout<<"Enter A value: ";
+    // cin>>A;
+    // int n;
+    // cout<<"number of elements in B: ";
+    // cin>>n;
+    // vector<int>B(n);
+    // cout<<"Enter B elements: ";
+    // for(int i=0;i<n;i++){
+    //     cin>>B[i];
+    // }
+    // int result = minSwaps(A, B);
+    // cout<<"Result: "<<result;
 }
